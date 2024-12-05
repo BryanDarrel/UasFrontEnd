@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bali Resort Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animasi.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Wavy Button</title>
+    <!--Google Fonts-->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="navbar.js"></script>
+    <link rel="stylesheet" href="navbar.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero-content">
+          <div class="navbar">
+            <a href="home.html" class="logo">
+              <img src="logo.png" alt="Logo">
+            </a>
+                <ul class="nav-links">
+                    <li><a id="nav-accommodation" href="#rooms">Akomodasi</a></li>
+                    <li><a id="nav-amenities" href="booking.html">Amenities</a></li>
+                    <li><a id="nav-dining" href="#dining">Dining</a></li>
+                    <li><a id="nav-gallery" href="#gallery">Gallery</a></li>
+                    <li><a id="nav-contact" href="#contact">Contact</a></li>
+                    <div class="language-switcher">
+                        <button class="language-button" id="en-button" onclick="changeLanguage('en')">EN</button>
+                        <button class="language-button" id="in-button" onclick="changeLanguage('id')">ID</button>
+                    </div>
+                  </ul>
+              </div>
+              
+              <section id="rooms" class="section rooms">
+                <div class="hero-content">
+                  <div class="arrow l" onclick="prev()">
+                    <img src="l.png" alt="l">
+                </div>
+                <div class="slide slide-1">
+                     <div class="caption">
+                        <h3 id="slide1-heading">Hello! Welcome to Bali Resort</h3>
+                        <p id="slide1-text">The perfect destination for your dream vacation.</p>
+                     </div>
+                </div>
+                <div class="slide slide-2">
+                    <div class="caption">
+                        <h3 id="slide2-heading">Experience calm and luxury at Bali Resort.</h3>
+                        <p id="slide2-text">Your dream vacation starts here.</p>
+                    </div>
+               </div>
+               <div class="slide slide-3">
+                    <div class="caption">
+                        <h3 id="slide3-heading">We are delighted to welcome you to Bali Resort.</h3>
+                        <p id="slide3-text">Where every moment is designed specifically for your comfort.</p>
+                    </div>
+               </div>
+               <div class="arrow r" onclick="next()">
+                    <img src="r.png" alt="r">
+                </div>
+            </div>  
+            <script>
+                let slide = document.querySelectorAll('.slide'); //menjadikan satu class di class slide(gambar)
+                var current = 0;//menampilkan slide pertama yang akan dimunculkan
+                var autoSlideInterval;//slide berjalan secara otomatis
+            
+                function cls() {
+                //menyembunyikan slide
+                for (let i = 0; i < slide.length; i++) {
+                  slide[i].style.display = 'none';
+                 } 
+               }
+            
+              function next() {
+              //menmpilkan slide berikutnya
+              cls();
+              if (current === slide.length - 1) current = -1;//mengembalikan ke awal slide
+              current++;//untuk ke slide selaanjutnya
+            
+              slide[current].style.display = 'block';
+            
+              }
+            
+              function prev() {
+               cls();
+               if (current === 0) current = slide.length;//jika saat ini di slide pertama, reset current ke slide terakhir.
+               current--;//untuk ke slide berikut
+            
+               slide[current].style.display = 'block';
+            
+              }
+            
+              function start() {
+                cls();
+                slide[current].style.display = 'block';
+              }
+            
+              //Fungsi untuk mengaktifkan auto-slide
+              function autoSlide() {
+               autoSlideInterval = setInterval(next, 3000); //Slide berubah setiap 3 detik
+             }
+            
+             // Fungsi untuk menghentikan auto-slide (jika diperlukan)
+              function stopAutoSlide() {
+               clearInterval(autoSlideInterval);
+             }
+            
+            // Memulai slide dan auto-slide ketika halaman dimuat
+              start();
+              autoSlide();
+             </script>
+                  <script src="language.js"></script>
+                  <script src="navbar.js"></script>
+              </header>
+            </head>
+            <body>
+      </header>
+  
+  
+    <!-- Rooms Section -->
+
+    <section id="" class="section rooms">
+        <div class="kamar">
+            <div class="left-column">
+                <div class="card">
+                    <h2>Standard Room</h2>
+                    <p>A manic and impulsive criminal from Zaum Drest.</p>
+                    <a href="booking.html">
+                        <div class="pic"></div>
+                    </a>                    <button></button>
+                </div>
+                <div class="card card2">
+                    <h2>Superior Room</h2>
+                    <p>Modern comfort and captivating views for an exceptional stay experience.</p>
+                    <a href="booking.html">
+                        <div class="pic"></div>
+                    </a>                    <button></button>
+                </div>
+            </div>
+        
+            <div class="right-column">
+                <div class="card">
+                    <h2 id="luxury-suite-heading">Luxury Suite</h2>
+                    <p id="luxury-suite-text">Experience the best luxury in our spacious suites.</p>
+                    <a href="booking.html">
+                        <div class="pic"></div>
+                    </a>                    <button></button>
+                </div>
+                <div class="card">
+                    <h2 id="deluxe-room-heading">Deluxe Room</h2>
+                    <p id="deluxe-room-text">Comfortable and elegant rooms with a stunning view.</p>
+                    <a href="booking.html">
+                        <div class="pic"></div>
+                    </a>                    <button></button>
+                </div>
+            </div>            
+            <div class="wrapper">
+                <div class="scroll-content">
+                    <!-- Add 6 logos with unique class names -->
+                    <div class="item item1">
+                        <img src="agoda.png" alt="agoda logo">
+                    </div>
+                    <div class="item item2">
+                      <img src="accor.png" alt="accor logo">
+                  </div>
+                  <div class="item item3">
+                      <img src="booking.png" alt="booking logo">
+                  </div>
+                  <div class="item item4">
+                      <img src="tripadvisor.png" alt="Tripadvisor Logo">
+                  </div>
+                  <div class="item item5">
+                      <img src="traveloka.png" alt="traveloka Logo">
+                  </div>
+                  <div class="item item6">
+                      <img src="traveloka.png" alt="Hotels Logo">
+                  </div>
+                  <div class="item item7">
+                      <img src="traveloka.png" alt="Hotels Logo">
+                  </div>
+                  <div class="item item8">
+                      <img src="traveloka.png" alt="Hotels Logo">
+                  </div>
+          
+                  <!-- Duplicate items for smooth scrolling -->
+                  <div class="item item1">
+                      <img src="agoda.png" alt="Agoda Logo">
+                  </div>
+                  <div class="item item2">
+                      <img src="accor.png" alt="Accor Logo">
+                  </div>
+                  <div class="item item3">
+                      <img src="booking.png" alt="Booking Logo">
+                  </div>
+                  <div class="item item4">
+                      <img src="tripadvisor.png" alt="Tripadvisor Logo">
+                  </div>
+                  <div class="item item5">
+                      <img src="traveloka.png" alt="traveloka Logo">
+                  </div>
+                  <div class="item item6">
+                      <img src="traveloka.png" alt="Hotels Logo">
+                  </div>
+                  <div class="item item7">
+                      <img src="traveloka.png" alt="Hotels Logo">
+                  </div>
+                  <div class="item item8">
+                      <img src="traveloka.png" alt="Hotels Logo">
+                  </div>
+              </div>
+          </div>
+        
+    </section>
+
+    <section id="amenities" class="section amenities">
+        <h2 id="amenities-heading">Amenities</h2>
+        <div class="amenities-list">
+            <div class="amenity" id="amenity-spa">Spa & Wellness</div>
+            <div class="amenity" id="amenity-pool">Infinity Pool</div>
+            <div class="amenity" id="amenity-beach">Private Beach</div>
+            <div class="amenity" id="amenity-fitness">Fitness Center</div>
+        </div>
+    </section>    
+
+    <section id="dining" class="section dining">
+        <h2 id="dining-heading">Dining Experience</h2>
+        <p id="dining-description">Enjoy world-class dining at our beachfront restaurants.</p>
+    </section>    
+
+    <div class="container swiper">
+      <div class="slider-wrapper">
+        <div class="card-list swiper-wrapper">
+          <div class="card-item swiper-slide">
+            <img src="user1.jpg" alt="User Profile" class="user-image" />
+            <h3 class="user-name">Liam Parker</h3>
+            <p class="review-text" id="review-text">"We are presently staying in the most luxurious resort we have ever been to. The Bali resort Nusa Dua Beach Resort is a most wonderful place to have a holiday. The resort is so beautiful and has the highest quality facilities."</p>            
+            <div class="review-rating">
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+            </div>
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="user7.jpg" alt="User Profile" class="user-image" />
+            <h3 class="user-name">Sophia Latjuba</h3>
+            <p class="review-text" id="review-text-2">"as much as I enjoyed the overall stay, but the hotel is lacking a convenience store for snacks and beverages, and the bed in the room has obviously sunk in too much for a comfortable sleep."</p>
+            <div class="review-rating">
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star_half </span>
+              <span class="material-symbols-outlined"> star_half </span>
+            </div>
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="user3.jpg" alt="User Profile" class="user-image" />
+            <h3 class="user-name">Peter Larssen</h3>
+            <p class="review-text" id="review-text-3">"Amazing hotel in Nusa Dua. Family friendly and luxurious. Rooms are as per the photos, super clean and spacious. Definitely recommend this hotel if you are planning a trip to Bali away from the hustle and bustle of Kuta."</p>
+            <div class="review-rating">
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star_half </span>
+            </div>
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="user4.jpg" alt="User Profile" class="user-image" />
+            <h3 class="user-name">Billy Foster</h3>
+            <p class="review-text" id="review-text-4">"The hotel location in Nusa Dua is excellent. There's plenty in the resort to entertain and feed you, and if you want more, you can stroll along the beach to any of the other restaurants or resorts. Everything was good!!!"</p>
+            <div class="review-rating">
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+            </div>
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="user5.jpg" alt="User Profile" class="user-image" />
+            <h3 class="user-name">Allison Brooks</h3>
+            <p class="review-text" id="review-text-5">"We enjoyed our stay at Sofitel Nusa Dua!! Thank you for the amazing service and big shoutout to Ravael for making our stay special and memorable. Will definitely come back and stay."</p>
+            <div class="review-rating">
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star </span>
+              <span class="material-symbols-outlined"> star_half </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-slider-button swiper-button-prev"></div>
+        <div class="swiper-slider-button swiper-button-next"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">Jalan Raya Ubud No.88, Ubud, Gianyar, Bali 80571, Indonesia</a></li>
+                        <li><a href="#">Telp: +62 (899) 8954 3222</a></li>
+                        <li><a href="#">WA: +62 811 738 8921</a></li>
+                        <li><a href="#">Fax: +62 (899) 8954 3111</a></li>
+                        <li><a href="#">Email: acv1622@sofitel.com</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#">Accommodations</a></li>
+                        <li><a href="#">Promotion</a></li>
+                        <li><a href="#">F&B</a></li>
+                        <li><a href="#">Wedding</a></li>
+                        <li><a href="#">Birthday</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Booking Status</a></li>
+                        <li><a href="#">Payment Options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="couponApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coupon Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="coupon.controller.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-100 font-sans leading-normal tracking-normal"
+    ng-controller="CouponController"
+  >
+    <div class="flex">
+      <!-- Sidebar -->
+      <div class="w-64 bg-gray-800 min-h-screen">
+        <!-- Header -->
+        <div class="p-4">
+          <div class="flex items-center">
+            <span class="text-white text-xl ml-2">Bali Resort Hotel</span>
+          </div>
+          <div class="mt-6">
+            <div class="flex items-center text-white">
+              <img
+                alt="User Avatar"
+                class="w-10 h-10 rounded-full"
+                src="https://storage.googleapis.com/a1aa/image/T5q1bEffftLjoIfAIHSYQ3wYtxvhlUqdZIUUYvUEryFLdVUPB.jpg"
+              />
+              <div class="ml-2">
+                <p>Welcome,</p>
+                <p class="font-bold">Admin Bali</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="mt-10">
+          <ul>
+            <!-- Coupon Management Section -->
+            <li
+              class="py-2 px-4 text-white hover:bg-gray-700 flex items-center"
+            >
+              <i class="fas fa-ticket-alt mr-2"></i>
+              <span>Coupon Management</span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col">
+        <header class="bg-white shadow p-4 flex justify-between items-center">
+          <h1 class="text-xl font-semibold">Coupon Management</h1>
+          <button
+            class="bg-blue-600 text-white px-4 py-2 rounded"
+            ng-click="openModal()"
+          >
+            Add Coupon
+          </button>
+        </header>
+        <div class="p-4">
+          <div class="bg-white shadow rounded p-4">
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr
+                  class="w-full bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+                >
+                  <th class="py-3 px-6 text-left">Coupon Code</th>
+                  <th class="py-3 px-6 text-left">Discount Type</th>
+                  <th class="py-3 px-6 text-left">Amount</th>
+                  <th class="py-3 px-6 text-left">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600 text-sm font-light">
+                <tr
+                  class="border-b border-gray-200 hover:bg-gray-100"
+                  ng-repeat="coupon in coupons"
+                >
+                  <td class="py-3 px-6 text-left">{{coupon.code}}</td>
+                  <td class="py-3 px-6 text-left">
+                    {{coupon.discountType === 'Nominal' ? 'Potongan Langsung' :
+                    'Persentase'}}
+                  </td>
+                  <td class="py-3 px-6 text-left">{{coupon.amount}}</td>
+                  <td class="py-3 px-6 text-left">
+                    <button
+                      class="bg-yellow-500 text-white px-2 py-1 rounded mr-2"
+                      ng-click="openEditModal(coupon)"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="bg-red-600 text-white px-2 py-1 rounded"
+                      ng-click="deleteCoupon(coupon._id)"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="fixed z-10 inset-0 overflow-y-auto" ng-if="isModalOpen">
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-96">
+          <h2 class="text-lg font-semibold mb-4">Add New Coupon</h2>
+          <form ng-submit="addCoupon()">
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700"
+                >Coupon Code</label
+              >
+              <input
+                type="text"
+                ng-model="newCoupon.code"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700"
+                >Discount Type</label
+              >
+              <select
+                ng-model="newCoupon.discountType"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                required
+              >
+                <option value="Nominal">Potongan Langsung (Nominal)</option>
+                <option value="Percentage">Persentase</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700"
+                >Amount</label
+              >
+              <input
+                type="number"
+                ng-model="newCoupon.amount"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                required
+              />
+            </div>
+            <div class="flex justify-end">
+              <button
+                type="button"
+                class="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2"
+                ng-click="closeModal()"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="bg-blue-600 text-white px-4 py-2 rounded"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="fixed z-10 inset-0 overflow-y-auto" ng-if="isEditModalOpen">
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-96">
+          <h2 class="text-lg font-semibold mb-4">Edit Coupon</h2>
+          <form ng-submit="updateCoupon()">
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700"
+                >Coupon Code</label
+              >
+              <input
+                type="text"
+                ng-model="selectedCoupon.code"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700"
+                >Discount Type</label
+              >
+              <select
+                ng-model="selectedCoupon.discountType"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                required
+              >
+                <option value="Nominal">Potongan Langsung (Nominal)</option>
+                <option value="Percentage">Persentase</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700"
+                >Amount</label
+              >
+              <input
+                type="number"
+                ng-model="selectedCoupon.amount"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                required
+              />
+            </div>
+            <div class="flex justify-end">
+              <button
+                type="button"
+                class="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2"
+                ng-click="closeEditModal()"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="bg-blue-600 text-white px-4 py-2 rounded"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

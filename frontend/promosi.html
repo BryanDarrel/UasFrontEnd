@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="promotionApp">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<head>
+    <title>Hotel Promotions</title>
+    <link rel="stylesheet" href="promosi.css">
+    <link rel="stylesheet" href="booking.css">
+
+</head>
+<body ng-controller="PromotionController">
+
+    <div class="navbar">
+        <div class="left">
+          <a href="home.html">Bali Resort Hotel</a>
+          <a href="booking.html" id="link-availability">Availability</a>
+          <a href="review.html" id="link-about">About</a>
+          <a href="../foto.html" id="link-contact">Foto</a>
+          <a href="wishlist.html" id="link-policies">wishlist</a>
+          <a href="promosi.html" id="link-policies">promosi</a>
+
+        </div>
+      </div>
+
+    <h1>Hotel Promotions</h1>
+
+    <!-- Create Promotion -->
+    <h3>Create Promotion</h3>
+    <form ng-submit="addPromotion()">
+        <label>Room Type:</label>
+        <input type="text" ng-model="newPromotion.type" required>
+        <label>Discount (%):</label>
+        <input type="number" ng-model="newPromotion.discount" required>
+        <label>Start Date:</label>
+        <input type="date" ng-model="newPromotion.startDate" required>
+        <label>End Date:</label>
+        <input type="date" ng-model="newPromotion.endDate" required>
+        <button type="submit">Add Promotion</button>
+    </form>
+
+    <!-- Read Promotions -->
+    <h3>Active Promotions</h3>
+    <table border="1">
+        <tr>
+            <th>Room Type</th>
+            <th>Discount</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="promotion in promotions">
+            <td>{{ promotion.type }}</td>
+            <td>{{ promotion.discount }}%</td>
+            <td>{{ promotion.startDate | date }}</td>
+            <td>{{ promotion.endDate | date }}</td>
+            <td>
+                <button ng-click="editPromotion(promotion)">Edit</button>
+                <button ng-click="deletePromotion(promotion._id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Update Promotion -->
+    <div ng-if="editing">
+        <h3>Edit Promotion</h3>
+        <form ng-submit="updatePromotion()">
+            <label>Room Type:</label>
+            <input type="text" ng-model="editPromotionData.type" required>
+            <label>Discount (%):</label>
+            <input type="number" ng-model="editPromotionData.discount" required>
+            <label>Start Date:</label>
+            <input type="date" ng-model="editPromotionData.startDate" required>
+            <label>End Date:</label>
+            <input type="date" ng-model="editPromotionData.endDate" required>
+            <button type="submit">Update Promotion</button>
+        </form>
+    </div>
+
+    <script src="promosiapp.js"></script>
+</body>
+</html>

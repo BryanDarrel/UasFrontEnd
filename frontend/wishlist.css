@@ -1,0 +1,138 @@
+body {
+  font-family: 'Poppins', sans-serif; /* Font modern */
+  background: linear-gradient(135deg, #e0f7fa, #80deea); /* Gradasi warna */
+  margin: 0;
+  padding: 0;
+}
+
+/* Header H1 */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #004d40;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan teks */
+  font-size: 2.5em;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan lembut */
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px); /* Efek melayang */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Bayangan lebih besar */
+}
+
+/* Daftar Kamar */
+.room-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.room-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff, #f0f4f9); /* Gradasi latar belakang */
+  margin-bottom: 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.room-item:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Efek hover */
+  transform: translateY(-3px);
+}
+
+/* Informasi Kamar */
+.room-info {
+  flex: 1;
+}
+
+.room-info h3 {
+  margin: 0;
+  color: #007bff;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.room-info h3:hover {
+  color: #0056b3;
+}
+
+.room-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Tombol */
+.room-actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Tombol Add */
+button.add {
+  background: linear-gradient(90deg, #007bff, #0056b3); /* Gradasi */
+  color: white;
+}
+
+button.add:hover {
+  background: linear-gradient(90deg, #0056b3, #003f7f); /* Hover gradasi */
+  transform: scale(1.05); /* Efek membesar */
+}
+
+/* Tombol Delete */
+button.delete {
+  background: linear-gradient(90deg, #dc3545, #a71d2a);
+  color: white;
+}
+
+button.delete:hover {
+  background: linear-gradient(90deg, #a71d2a, #870000);
+  transform: scale(1.05);
+}
+
+/* Wishlist Kosong */
+.wishlist-empty {
+  text-align: center;
+  font-size: 18px;
+  color: #888888;
+  font-style: italic;
+}
+/* Edit button styling */
+button.edit-btn {
+  background: linear-gradient(90deg, #ffc107, #e0a800);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.edit-btn:hover {
+  background: linear-gradient(90deg, #e0a800, #b38600);
+  transform: scale(1.05);
+}
+

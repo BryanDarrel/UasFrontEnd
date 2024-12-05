@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="memoryApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenangan</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet" href="memory.css">
+
+</head>
+<body ng-controller="MemoryController">
+
+   <!-- Navbar -->
+   <div class="navbar">
+    <div class="left">
+      <a href="frontend/home.html">Bali Resort Hotel</a>
+      <a href="frontend/booking.html" id="link-availability">Availability</a>
+      <a href="frontend/review.html" id="link-about">Ulasan</a>
+      <a href="foto.html" id="link-contact">Foto</a>
+      <a href="frontend/wishlist.html" id="link-policies">Wishlist</a>
+      <a href="frontend/promosi.html" id="link-policies">promosi</a>
+
+    </div>
+  </div>
+  
+  <div class="container">
+    <h1>Kenangan</h1>
+    
+    <!-- Form Tambah Foto -->
+    <form ng-submit="addMemory()" enctype="multipart/form-data">
+      <input type="file" file-model="memory.photo" required>
+      <input type="text" ng-model="memory.caption" placeholder="Tambahkan caption..." required>
+      <button type="submit">Tambah Kenangan</button>
+    </form>
+
+    <!-- Daftar Kenangan -->
+    <div class="memory-list">
+      <div class="memory-item" ng-repeat="memory in memories">
+        <img ng-src="{{memory.photo}}" alt="Photo">
+        <p>{{memory.caption}}</p>
+        <button ng-click="deleteMemory(memory._id)">Hapus</button>
+        <button ng-click="editMemory(memory)">Edit</button>
+
+        <!-- Form Edit Caption -->
+        <div ng-show="memory.editing">
+          <input type="text" ng-model="memory.caption" placeholder="Edit caption..." required>
+          <button ng-click="saveMemory(memory)">Simpan</button>
+          <button ng-click="cancelEdit(memory)">Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="fotoapp.js"></script>
+</body>
+</html>
